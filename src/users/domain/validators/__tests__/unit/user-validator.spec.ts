@@ -69,71 +69,84 @@ describe('UserValidator unit tests', () => {
       'email must be an email',
     ])
 
-      isValid = sut.validate({
-        ...UserDataBuilder({}),
-        email: 10 as any,
-      })
-      expect(isValid).toBeFalsy()
-      expect(sut.erros['email']).toStrictEqual([
-        'email must be an email',
-        'email must be a string',
-        'email must be shorter than or equal to 255 characters',
-      ])
-
-      isValid = sut.validate({
-        ...UserDataBuilder({}),
-        email: 'a'.repeat(256) as any,
-      })
-      expect(isValid).toBeFalsy()
-      expect(sut.erros['email']).toStrictEqual([
-        'email must be an email',
-        'email must be shorter than or equal to 255 characters',
-      ])
+    isValid = sut.validate({
+      ...UserDataBuilder({}),
+      email: 10 as any,
     })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['email']).toStrictEqual([
+      'email must be an email',
+      'email must be a string',
+      'email must be shorter than or equal to 255 characters',
+    ])
 
-
-    it('Invalidation cases for password field', () => {
-      let isValid = sut.validate(null as any)
-      expect(isValid).toBeFalsy()
-      expect(sut.erros['password']).toStrictEqual([
-        'password should not be empty',
-        'password must be a string',
-        'password must be shorter than or equal to 100 characters',
-      ])
-
-      isValid = sut.validate({
-        ...UserDataBuilder({}),
-        password: '' as any,
-      })
-      expect(isValid).toBeFalsy()
-      expect(sut.erros['password']).toStrictEqual(['password should not be empty'])
-
-      isValid = sut.validate({
-        ...UserDataBuilder({}),
-        password: 10 as any,
-      })
-      expect(isValid).toBeFalsy()
-      expect(sut.erros['password']).toStrictEqual([
-        'password must be a string',
-        'password must be shorter than or equal to 100 characters',
-      ])
-
-      isValid = sut.validate({
-        ...UserDataBuilder({}),
-        password: 'a'.repeat(256) as any,
-      })
-      expect(isValid).toBeFalsy()
-      expect(sut.erros['password']).toStrictEqual([
-        'password must be shorter than or equal to 100 characters',
-      ])
+    isValid = sut.validate({
+      ...UserDataBuilder({}),
+      email: 'a'.repeat(256) as any,
     })
-
-
-    it('Valid case for  uservalidator class', () => {
-      const props = UserDataBuilder({})
-      const isValid = sut.validate(props)
-      expect(isValid).toBeTruthy()
-      expect(sut.validatedData).toStrictEqual(new UserRules(props))
-    })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['email']).toStrictEqual([
+      'email must be an email',
+      'email must be shorter than or equal to 255 characters',
+    ])
   })
 
+  it('Invalidation cases for password field', () => {
+    let isValid = sut.validate(null as any)
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['password']).toStrictEqual([
+      'password should not be empty',
+      'password must be a string',
+      'password must be shorter than or equal to 100 characters',
+    ])
+
+    isValid = sut.validate({
+      ...UserDataBuilder({}),
+      password: '' as any,
+    })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['password']).toStrictEqual([
+      'password should not be empty',
+    ])
+
+    isValid = sut.validate({
+      ...UserDataBuilder({}),
+      password: 10 as any,
+    })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['password']).toStrictEqual([
+      'password must be a string',
+      'password must be shorter than or equal to 100 characters',
+    ])
+
+    isValid = sut.validate({
+      ...UserDataBuilder({}),
+      password: 'a'.repeat(256) as any,
+    })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['password']).toStrictEqual([
+      'password must be shorter than or equal to 100 characters',
+    ])
+  })
+
+  it('Invalidation cases for createdAt field', () => {
+    let isValid = sut.validate({ ...props, createdAt: 10 as any })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['createdAt']).toStrictEqual([
+      'createdAt must be a Date instance',
+    ])
+
+    isValid = sut.validate({ ...props, createdAt: 2023 as any })
+    expect(isValid).toBeFalsy()
+    expect(sut.erros['createdAt']).toStrictEqual([
+      'createdAt must be a Date instance',
+    ])
+  })
+
+  it('Valid case for  uservalidator class', () => {
+    const props = UserDataBuilder({})
+    const isValid = sut.validate(props)
+    expect(isValid).toBeTruthy()
+    expect(sut.validatedData).toStrictEqual(new UserRules(props))
+  })
+})

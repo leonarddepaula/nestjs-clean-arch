@@ -5,7 +5,7 @@ export type UserProps = {
   name: string
   email: string
   password: string
-  createAt?: Date
+  createdAt?: Date
 }
 
 
@@ -14,7 +14,7 @@ export class UserEntity extends Entity<UserProps>{
   constructor(public readonly props: UserProps, id?: string){
     UserEntity.validate(props)
     super(props, id)
-    this.props.createAt = props.createAt ?? new Date()
+    this.props.createdAt = props.createdAt ?? new Date()
   }
 
   updated(value: string): void {
@@ -47,8 +47,8 @@ export class UserEntity extends Entity<UserProps>{
     this.props.password = value
   }
 
-  get createAt(): Date {
-    return this.props.createAt
+  get createdAt(): Date {
+    return this.props.createdAt
   }
 
 
