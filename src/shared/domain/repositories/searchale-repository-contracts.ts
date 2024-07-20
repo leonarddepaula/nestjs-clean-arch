@@ -8,7 +8,7 @@ export type SearchProps<Filter = string> = {
   perPage?: number
   sort?: string | null
   sortDir?: SortDirection | null
-  filters?: Filter | null
+  filter?: Filter | null
 }
 
 export class SearchParams {
@@ -16,14 +16,14 @@ export class SearchParams {
   protected _perPage = 15
   protected _sort: string | null
   protected _sortDir: SortDirection | null
-  protected _filters: string | null
+  protected _filter: string | null
 
   constructor(props: SearchProps = {}) {
     this.page = props.page
     this.perPage = props.perPage
     this.sort = props.sort
     this.sortDir = props.sortDir
-    this.filters = props.filters
+    this.filter = props.filter
   }
 
   get page() {
@@ -60,7 +60,7 @@ export class SearchParams {
 
   private set sort(value: string | null) {
     this._sort =
-      value === null || value === undefined || value === '' ? null : value
+      value === null || value === undefined || value === '' ? null : `${value}`
   }
 
   get sortDir() {
@@ -76,13 +76,13 @@ export class SearchParams {
     this._sortDir = dir !== 'asc' && dir !== 'desc' ? 'desc' : dir
   }
 
-  get filters() {
-    return this._filters
+  get filter() {
+    return this._filter
   }
 
-  private set filters(value: string | null) {
-    this._filters =
-      value === null || value === undefined || value === '' ? null : value
+  private set filter(value: string | null) {
+    this._filter =
+      value === null || value === undefined || value === '' ? null : `${value}`
   }
 }
 
