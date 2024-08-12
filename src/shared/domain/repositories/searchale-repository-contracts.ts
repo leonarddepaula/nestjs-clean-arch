@@ -17,7 +17,7 @@ export type SearchResultProps<E extends Entity, Filter> = {
   currentPage: number
   perPage: number
   sort: string | null
-  sortDirt: string | null
+  sortDir: string | null
   filter: Filter | null
 }
 
@@ -101,7 +101,7 @@ export class SearchResult<E extends Entity, Filter = string> {
   readonly total: number
   readonly currentPage: number
   readonly perPage: number
-  readonly lastPage
+  readonly lastPage: number
   readonly sort: string | null
   readonly sortDir: string | null
   readonly filter: Filter | null
@@ -113,7 +113,7 @@ export class SearchResult<E extends Entity, Filter = string> {
     this.perPage = props.perPage
     this.lastPage = Math.ceil(this.total / this.perPage)
     this.sort = props.sort ?? null
-    this.sortDir = props.sortDirt ?? null
+    this.sortDir = props.sortDir ?? null
     this.filter = props.filter ?? null
   }
 
@@ -133,8 +133,9 @@ export class SearchResult<E extends Entity, Filter = string> {
 
 export interface SearchableRepositoryInterface<
   E extends Entity,
-  SearchInput,
-  SearchOutput,
+  Filter = string,
+  SearchInput = SearchParams,
+  SearchOutput = SearchResult<E, Filter>,
 > extends RepositoryInterface<E> {
-  search(searchInput: SearchProps): Promise<SearchOutput>
+  search(props: SearchInput): Promise<SearchOutput>
 }
