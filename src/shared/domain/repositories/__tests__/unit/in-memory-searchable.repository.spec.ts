@@ -11,7 +11,7 @@ class StubEntity extends Entity<StubEntityProps> {}
 class StubInMemorySearchableRepository extends InMemorySearchableRepository<StubEntity> {
   sortableFields: string[] = ['name']
 
-  protected async applyfilter(
+  protected async applyFilter(
     items: StubEntity[],
     filter: string | null,
   ): Promise<StubEntity[]> {
@@ -29,12 +29,37 @@ describe('InMemorySearchableRepository tests', () => {
 
   beforeEach(() => {
     sut = new StubInMemorySearchableRepository()
-
-    describe('applyFilter method', () => {
-      it('search', async () => {})
-    })
-    describe('applySort method', () => {})
-    describe('applyPaginate method', () => {})
-    describe('search method', () => {})
   })
+  describe('applyFilter method', () => {
+    it('should no filter items when filter param is null', async () => {
+      const items = [new StubEntity({ name: 'name value', price: 50 })]
+      const spyFilterMethod = jest.spyOn(items, 'filter')
+      const itemsFiltered = await sut['applyFilter'](items, null)
+      expect(itemsFiltered).toStrictEqual(items)
+      expect(spyFilterMethod).toHaveBeenCalledTimes(1)
+    })
+
+    it('should filter using a filter param', async () => {
+      const items = [
+        new StubEntity({ name: 'test value', price: 50 }),
+        new StubEntity({ name: 'TEST value', price: 50 }),
+        new StubEntity({ name: 'fake value', price: 50 }),
+      ]
+      const spyFilterMethod = jest.spyOn(items, 'filter')
+      let itemsFiltered = await sut['applyFilter'](items, 'TEST')
+      expect(itemsFiltered).toStrictEqual([items[0], items[1]])
+      expect(spyFilterMethod).toHaveBeenCalledTimes(1)
+
+      itemsFiltered = await sut['applyFilter'](items, 'test')
+      expect(itemsFiltered).toStrictEqual([items[0], items[1]])
+      expect(spyFilterMethod).toHaveBeenCalledTimes(2)
+
+      itemsFiltered = await sut['applyFilter'](items, 'no-filter')
+      expect(itemsFiltered).toHaveLength(0)
+      expect(spyFilterMethod).toHaveBeenCalledTimes(3)
+    })
+  })
+  describe('applySort method', () => {})
+  describe('applyPaginate method', () => {})
+  describe('search method', () => {})
 })
