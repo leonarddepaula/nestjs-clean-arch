@@ -42,7 +42,8 @@
     "entities": "Ngrx-entities", // ícone de classes para entidades
     "repositories": "database", // ícone de banco de dados/repositórios
     "infrastructure": "tools", // infraestrutura com ícone de ferramentas
-    "interfaces": "interface" // ícone para interfaces
+    "interfaces": "interface", // ícone para interfaces
+    "env-config": "Environment" // ícone para configurações de ambiente
   },
   "material-icon-theme.files.associations": {
     "*.domain.ts": "class",
