@@ -37,6 +37,8 @@
     "application": "App", // ícone de aplicação
     "usecases": "components", // ícone para casos de uso
     "usecase": "components", // ícone para casos de uso
+    "dtos": "flow", // ícone de classes para dtos
+    "dto": "flow", // ícone de classes para dtos
     "server": "server", // ícone de servidor
     "entity": "Ngrx-entities", // ícone de classes para entidades
     "entities": "Ngrx-entities", // ícone de classes para entidades
