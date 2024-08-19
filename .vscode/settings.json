@@ -1,35 +1,55 @@
 {
-    "workbench.colorCustomizations": {
-      "activityBar.activeBackground": "#f1586e",
-      "activityBar.background": "#f1586e",
-      "activityBar.foreground": "#15202b",
-      "activityBar.inactiveForeground": "#15202b99",
-      "activityBarBadge.background": "#33eb14",
-      "activityBarBadge.foreground": "#15202b",
-      "commandCenter.border": "#e7e7e799",
-      "sash.hoverBorder": "#f1586e",
-      "statusBar.background": "#ed2945",
-      "statusBar.foreground": "#e7e7e7",
-      "statusBarItem.hoverBackground": "#f1586e",
-      "statusBarItem.remoteBackground": "#ed2945",
-      "statusBarItem.remoteForeground": "#e7e7e7",
-      "titleBar.activeBackground": "#ed2945",
-      "titleBar.activeForeground": "#e7e7e7",
-      "titleBar.inactiveBackground": "#ed294599",
-      "titleBar.inactiveForeground": "#e7e7e799"
-    },
-    "peacock.color": "#ed2945",
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "git.mergeEditor": false,
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "always"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#f1586e",
+    "activityBar.background": "#f1586e",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#33eb14",
+    "activityBarBadge.foreground": "#15202b",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#f1586e",
+    "statusBar.background": "#ed2945",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#f1586e",
+    "statusBarItem.remoteBackground": "#ed2945",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#ed2945",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#ed294599",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#ed2945",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "git.mergeEditor": false,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "material-icon-theme.folders.associations": {
+    "domain": "class", // ícone de classes para o domínio
+    "application": "App", // ícone de aplicação
+    "usecases": "components", // ícone para casos de uso
+    "usecase": "components", // ícone para casos de uso
+    "server": "server", // ícone de servidor
+    "entity": "Ngrx-entities", // ícone de classes para entidades
+    "entities": "Ngrx-entities", // ícone de classes para entidades
+    "repositories": "database", // ícone de banco de dados/repositórios
+    "infrastructure": "tools", // infraestrutura com ícone de ferramentas
+    "interfaces": "interface" // ícone para interfaces
+  },
+  "material-icon-theme.files.associations": {
+    "*.domain.ts": "class",
+    "*.application.ts": "App",
+    // "*.usecase.ts": "components",
+    "*.repository.ts": "database",
+    "*.interface.ts": "interface",
+    "*.entity.ts": "class"
+  }
 }
