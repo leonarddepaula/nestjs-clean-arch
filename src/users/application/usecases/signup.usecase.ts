@@ -3,7 +3,7 @@ import { UserRepository } from '../../domain/repositories/user.repository'
 import { BadRequestError } from '../errors/bad-request-error'
 import { HashProvider } from './../../../shared/application/providers/hash-provider'
 
-export namespace SignUpUseCase {
+export namespace SignupUseCase {
   export type Input = {
     name: string
     email: string
@@ -15,7 +15,7 @@ export namespace SignUpUseCase {
     name: string
     email: string
     password: string
-    creayedAt?: Date
+    createdAt: Date
   }
   export class UseCase {
     constructor(

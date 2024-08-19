@@ -1,3 +1,4 @@
+import { ConflictError } from '@/shared/domain/errors/conflict-error'
 import { NotFoundError } from '@/shared/domain/errors/not-found-error'
 import { InMemorySearchableRepository } from '@/shared/domain/repositories/in-memory-searchable.repository'
 import { SortDirection } from '@/shared/domain/repositories/searchale-repository-contracts'
@@ -21,7 +22,7 @@ export class UserInMemoryRepository
   async emailExists(email: string): Promise<void> {
     const entity = this.items.find(item => item.email === email)
     if (entity) {
-      throw new NotFoundError('Email adresss already used')
+      throw new ConflictError('Email adresss already used')
     }
   }
 
