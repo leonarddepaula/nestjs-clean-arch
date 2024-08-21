@@ -1,4 +1,4 @@
-import { NotFoundError } from '@/shared/domain/errors/not-found-error'
+import { BadRequestError } from '@/shared/application/errors/bad-request-error'
 import { UserEntity } from '@/users/domain/entities/user.entity'
 import { UserDataBuilder } from '@/users/domain/testing/helpers/user-data-builder'
 import { UserInMemoryRepository } from '@/users/infrastructure/database/in-memory/repositories/user-in-momory.repository'
@@ -13,7 +13,7 @@ describe('GetUserUsecase', () => {
   })
   it('Should throws an error if user does not exists', async () => {
     await expect(sut.execute({ id: 'invalid_id' })).rejects.toThrow(
-      new NotFoundError('Entity not found'),
+      new BadRequestError('Entity not found'),
     )
   })
 
