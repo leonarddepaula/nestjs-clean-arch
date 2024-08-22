@@ -3,14 +3,13 @@ import { NotFoundError } from '@/shared/domain/errors/not-found-error'
 import { UserEntity } from '@/users/domain/entities/user.entity'
 import { UserDataBuilder } from '@/users/domain/testing/helpers/user-data-builder'
 import { UserInMemoryRepository } from '@/users/infrastructure/database/in-memory/repositories/user-in-momory.repository'
-import { UpdateUserUseCase } from '../../upadate-user.usecase'
 describe('UpdateUserUsecase', () => {
-  let sut: UpdateUserUseCase.UseCase
+  let sut: UpdatePasswordUserUseCase.UseCase
   let repository: UserInMemoryRepository
 
   beforeEach(() => {
     repository = new UserInMemoryRepository()
-    sut = new UpdateUserUseCase.UseCase(repository)
+    sut = new UpdatePasswordUserUseCase.UseCase(repository)
   })
   it('Should throws an error when entity not found', async () => {
     await expect(() =>
