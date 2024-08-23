@@ -2,7 +2,7 @@ import { BadRequestError } from '@/shared/application/errors/bad-request-error'
 import { UserEntity } from '@/users/domain/entities/user.entity'
 import { UserDataBuilder } from '@/users/domain/testing/helpers/user-data-builder'
 import { UserInMemoryRepository } from '@/users/infrastructure/database/in-memory/repositories/user-in-momory.repository'
-import { GetUserUseCase } from '../../getuser.usecase'
+import { GetUserUseCase } from '../../get-user.usecase'
 describe('GetUserUsecase', () => {
   let sut: GetUserUseCase.UseCase
   let repository: UserInMemoryRepository
