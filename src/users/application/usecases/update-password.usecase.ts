@@ -4,7 +4,7 @@ import { UseCase as DefaultUseCase } from '@/shared/application/usecases/use-cas
 import { UserRepository } from '@/users/domain/repositories/user.repository'
 import { UserOutput, UserOutputMapper } from '../dtos/user.output.dto'
 
-export namespace UpdatePasswordUserUseCase {
+export namespace UpdatePasswordUseCase {
   export type Input = {
     id: string
     password: string

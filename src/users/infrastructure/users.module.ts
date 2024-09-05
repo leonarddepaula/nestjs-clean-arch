@@ -6,7 +6,7 @@ import { ListUsersUseCase } from '../application/usecases/list-users.usecase'
 import { SigninUseCase } from '../application/usecases/signin.usecase'
 import { SignupUseCase } from '../application/usecases/signup.usecase'
 import { UpdateUserUseCase } from '../application/usecases/upadate-user.usecase'
-import { UpdatePasswordUserUseCase } from '../application/usecases/update-password.usecase'
+import { UpdatePasswordUseCase } from '../application/usecases/update-password.usecase'
 import { UserRepository } from '../domain/repositories/user.repository'
 import { UserInMemoryRepository } from './database/in-memory/repositories/user-in-momory.repository'
 import { BcryptjsHashProvider } from './hash-provider/bcryptjs-hash.provider'
@@ -67,15 +67,12 @@ import { UsersService } from './users.service'
       inject: ['UserRepository'],
     },
     {
-      provide: UpdatePasswordUserUseCase.UseCase,
+      provide: UpdatePasswordUseCase.UseCase,
       useFactory: (
         userRepository: UserRepository.Repository,
         hashProvider: HashProvider,
       ) => {
-        return new UpdatePasswordUserUseCase.UseCase(
-          userRepository,
-          hashProvider,
-        )
+        return new UpdatePasswordUseCase.UseCase(userRepository, hashProvider)
       },
       inject: ['UserRepository', 'HashProvider'],
     },
