@@ -109,4 +109,16 @@ describe('UsersController', () => {
       id,
     })
   })
+
+  it('should find a user', async () => {
+    const output: UserOutput = props
+    const mockGetUserUseCase = {
+      execute: jest.fn().mockResolvedValue(Promise.resolve(output)),
+    }
+    sut['getUserUseCase'] = mockGetUserUseCase as any
+
+    const result = await sut.findOne(id)
+    expect(output).toMatchObject(result)
+    expect(mockGetUserUseCase.execute).toHaveBeenCalledWith({ id })
+  })
 })
