@@ -1,8 +1,10 @@
 import { UserOutput } from '@/users/application/dtos/user.output.dto'
 import { SigninUseCase } from '@/users/application/usecases/signin.usecase'
 import { SignupUseCase } from '@/users/application/usecases/signup.usecase'
+import { UpdateUserUseCase } from '@/users/application/usecases/upadate-user.usecase'
 import { SigninDto } from '../../dtos/signin.dto'
 import { SignupDto } from '../../dtos/signup.dto'
+import { UpdateUserDto } from '../../dtos/update-user.dto'
 import { UsersController } from '../../users.controller'
 
 describe('UsersController', () => {
@@ -56,5 +58,20 @@ describe('UsersController', () => {
     const result = await sut.login(input)
     expect(output).toMatchObject(result)
     expect(mockSigninUseCase.execute).toHaveBeenCalledWith(input)
+  })
+
+  it('should upadate a user', async () => {
+    const output: UpdateUserUseCase.Output = props
+    const mockUpdateUserUseCase = {
+      execute: jest.fn().mockResolvedValue(Promise.resolve(output)),
+    }
+    sut['updateUserUseCase'] = mockUpdateUserUseCase as any
+    const input: UpdateUserDto = {
+      name: 'Jhon Doe',
+    }
+
+    const result = await sut.update(id, input)
+    expect(output).toMatchObject(result)
+    expect(mockUpdateUserUseCase.execute).toHaveBeenCalledWith({ id, ...input })
   })
 })
