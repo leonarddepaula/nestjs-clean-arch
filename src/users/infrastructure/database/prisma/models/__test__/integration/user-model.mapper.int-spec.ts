@@ -1,5 +1,5 @@
 import { ValidationError } from '@/shared/domain/errors/validation-error'
-import { setupPrismaTests } from '@/shared/infrastructure/database/prisma/testing/setu-prisma-tests'
+import { setupPrismaTests } from '@/shared/infrastructure/database/prisma/testing/setup-prisma-tests'
 import { UserEntity } from '@/users/domain/entities/user.entity'
 import { PrismaClient, User } from '@prisma/client'
 import { UserModelMapper } from '../../user-model.mapper'
