@@ -56,6 +56,9 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+
+# teste de integração: npm run test:int -- user-prisma.repository
+$ npm run test:int --
 ```
 
 ## Docker
